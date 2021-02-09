@@ -7,6 +7,6 @@ CREATE TABLE products (
     price DECIMAL(5,2),
     in_stock INTEGER,
     p_description TEXT NOT NULL,
-    "sites_id" INTEGER REFERENCES "sites"(id)
+    "site_id" INTEGER REFERENCES "sites"(id)
     ON DELETE CASCADE NOT NULL
 )

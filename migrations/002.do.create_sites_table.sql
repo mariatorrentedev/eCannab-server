@@ -6,6 +6,6 @@ CREATE TABLE sites (
     banner TEXT NOT NULL,
     seller_description TEXT NOT NULL,
     subdomain TEXT NOT NULL,
-    "users_id" INTEGER REFERENCES "users"(id)
+    "user_id" INTEGER REFERENCES "users"(id)
     ON DELETE CASCADE NOT NULL
 )

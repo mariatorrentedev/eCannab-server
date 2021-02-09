@@ -3,6 +3,6 @@ CREATE TABLE resources (
   name TEXT NOT NULL,
   link TEXT NOT NULL,
   date_created TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-   "users_id" INTEGER REFERENCES "users"(id)
+   "user_id" INTEGER REFERENCES "users"(id)
     ON DELETE CASCADE NOT NULL
 )

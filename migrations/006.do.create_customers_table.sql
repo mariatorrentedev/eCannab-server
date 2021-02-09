@@ -4,6 +4,6 @@ CREATE TABLE customers (
   email TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL UNIQUE,
   date_created TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-   "sites_id" INTEGER REFERENCES "sites"(id)
-    ON DELETE CASCADE NOT NULL,
+  "site_id" INTEGER REFERENCES "sites"(id)
+    ON DELETE CASCADE NOT NULL
 )
