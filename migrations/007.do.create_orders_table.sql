@@ -4,6 +4,6 @@ CREATE TABLE orders (
    "customers_id" INTEGER REFERENCES "customers"(id)
     ON DELETE CASCADE NOT NULL,
     p_title TEXT NOT NULL,
-    total_paid INTEGER,
+    total_paid DECIMAL(5,2),
     status TEXT,
 )

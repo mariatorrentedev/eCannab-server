@@ -3,6 +3,7 @@ CREATE TABLE sites (
     date_created TIMESTAMPTZ DEFAULT now() NOT NULL,
     brand TEXT NOT NULL,
     logo TEXT NOT NULL,
+    banner TEXT NOT NULL,
     seller_description TEXT NOT NULL,
     subdomain TEXT NOT NULL,
     "users_id" INTEGER REFERENCES "users"(id)

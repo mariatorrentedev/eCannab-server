@@ -4,7 +4,7 @@ CREATE TABLE products (
     title TEXT NOT NULL,
     brand TEXT NOT NULL,
     p_image TEXT NOT NULL,
-    price INTEGER ,
+    price DECIMAL(5,2),
     in_stock INTEGER,
     p_description TEXT NOT NULL,
     "sites_id" INTEGER REFERENCES "sites"(id)
