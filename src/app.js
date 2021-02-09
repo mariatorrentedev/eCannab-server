@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
+const usersRouter = require("./Users/users-router");
+const authRouter = require("./auth/auth-router");
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
@@ -16,6 +18,10 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("This is the ecannab-server!");
 });
+// Users
+app.use(usersRouter);
+app.use("api/auth", authRouter);
+// Sites
 
 // Error Handler
 app.use(function errorHandler(error, req, res, next) {
