@@ -9,9 +9,9 @@ authRouter
     next();
   })
   .post((req, res, next) => {
-    const { name, password, email } = req.body;
-    const user = { name, password, email };
-    for (const field of ["name", "email", "password"]) {
+    const { password, email } = req.body;
+    const user = { password, email };
+    for (const field of ["email", "password"]) {
       if (!req.body[field]) {
         return res.status(400).json({
           error: `Missing ${field}`,

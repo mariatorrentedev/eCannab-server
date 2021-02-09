@@ -11,15 +11,15 @@ TRUNCATE
  RESTART IDENTITY CASCADE;
 
 INSERT INTO
-users (name, email, password)
+users (email, password)
 VALUES (
-    'andrea', 'test1@gmail.com', 'Astapostapulos66*'
+    'test1@gmail.com', 'Astapostapulos66*'
 ),
 (
-    'teston','test2@gmail.com', 'cascabeletoS1324+'
+    'test2@gmail.com', 'cascabeletoS1324+'
 ),
 (
-    'ramon','test3@gmail.com', 'DonRamon1900!'
+    'test3@gmail.com', 'DonRamon1900!'
 );
 
 INSERT INTO
