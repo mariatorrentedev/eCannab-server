@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
   res.send("This is the ecannab-server!");
 });
 
+// Error Handler
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === "production") {
