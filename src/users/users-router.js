@@ -15,7 +15,7 @@ const serializeUser = (user) => {
 let knexInstance;
 
 usersRouter
-  .route("/api/users")
+  .route("")
   .all((req, res, next) => {
     knexInstance = req.app.get("db");
     next();

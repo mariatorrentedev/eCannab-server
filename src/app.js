@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
 const usersRouter = require("./Users/users-router");
 const authRouter = require("./auth/auth-router");
+const sitesRouter = require("./sites/sites-router");
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
@@ -19,9 +20,17 @@ app.get("/", (req, res) => {
   res.send("This is the ecannab-server!");
 });
 // Users
-app.use(usersRouter);
+app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 // Sites
+app.use("/api/s", sitesRouter);
+//Products
+
+//Resources
+
+//Orders
+
+//Customers
 
 // Error Handler
 app.use(function errorHandler(error, req, res, next) {

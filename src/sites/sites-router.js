@@ -1,68 +1,62 @@
-/*const express = require("express");
-const TastingsService = require("./tastings-service");
+const express = require("express");
+const SitesService = require("./sites-service");
 const { requireAuth } = require("../middleware/jwt-auth");
 
-const tastingsRouter = express.Router();
+const sitesRouter = express.Router();
 const bodyParser = express.json();
 
-tastingsRouter
+sitesRouter
   .route("/")
   .get(requireAuth, (req, res, next) => {
-    console.log("called", req.user.id);
-    TastingsService.getAllTastings(req.app.get("db"), req.user.id)
-      .then((tastings) => res.json(tastings))
+    SitesService.getAllSites(req.app.get("db"), req.user.id)
+      .then((sites) => res.json(sites))
       .catch(next);
   })
   .post(requireAuth, (req, res, next) => {
-    if (!req.body.winename) {
-      res.status(400).json({ error: "Wine Name required" });
+    if (!req.body.brand) {
+      res.status(400).json({ error: "Brand is required" });
     }
-    const newtasting = req.body;
-    newtasting.userid = req.user.id;
+    const newsite = req.body;
+    newsite.userid = req.user.id;
 
-    TastingsService.insertTasting(req.app.get("db"), newtasting)
-      .then((tasting) => {
-        res.status(201).location(`/tastings/${tasting.id}`).json(tasting);
+    SitesService.insertSite(req.app.get("db"), newsite)
+      .then((site) => {
+        res.status(201).location(`/s/${site.id}`).json(site);
       })
       .catch(next);
   });
 
-tastingsRouter
+sitesRouter
   .route("/:id")
   .all(requireAuth, (req, res, next) => {
     cid = parseInt(req.params.id);
-    TastingsService.getById(req.app.get("db"), cid, req.user.id)
-      .then((tastings) => {
-        if (!tastings) {
+    SitesService.getById(req.app.get("db"), cid, req.user.id)
+      .then((sites) => {
+        if (!sites) {
           return res.status(404).json({
-            error: { message: `tasting doesn't exist` },
+            error: { message: `site doesn't exist` },
           });
         }
-        res.tastings = tastings;
+        res.sites = sites;
         next();
       })
       .catch(next);
   })
 
   .delete(requireAuth, (req, res, next) => {
-    TastingsService.deleteTasting(req.app.get("db"), cid, req.user.id)
+    SitesService.deleteSite(req.app.get("db"), cid, req.user.id)
       .then(() => {
         res.status(204).end();
       })
       .catch(next);
   })
   .put(requireAuth, bodyParser, (req, res, next) => {
-    const updateTasting = req.body;
-    TastingsService.updateTasting(
-      req.app.get("db"),
-      cid,
-      updateTasting,
-      req.user.id
-    )
+    const updateSite = req.body;
+    SitesService.updateSite(req.app.get("db"), cid, updateSite, req.user.id)
       .then(() => {
-        res.status(200).json((res.updateTasting = updateTasting));
+        res.status(200).json((res.updateSite = updateSite));
       })
       .catch(next);
   });
 
-module.exports = tastingsRouter; */
+module.exports = sitesRouter;

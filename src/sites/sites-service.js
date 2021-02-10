@@ -1,26 +1,25 @@
-/*const TastingsService = {
-  // All tastings CRUD are going to depend on the userId(as foreign key of tastings table)
-  getAllTastings(db, userid) {
-    return db.select("*").from("tastings").where({ userid });
+const SitesService = {
+  getAllSites(db, user_id) {
+    return db.select("*").from("tastings").where({ user_id });
   },
-  insertTasting(db, newTasting) {
+  insertSite(db, newSite) {
     return db
-      .insert(newTasting)
-      .into("tastings")
+      .insert(newSite)
+      .into("sites")
       .returning("*")
       .then((rows) => {
         return rows[0];
       });
   },
-  getById(db, id, userid) {
-    return db.select("*").from("tastings").where({ id: id, userid }).first();
+  getById(db, id, user_id) {
+    return db.select("*").from("sites").where({ id: id, user_id }).first();
   },
-  deleteTasting(db, id, userid) {
-    return db.from("tastings").where({ id, userid }).delete();
+  deleteSite(db, id, user_id) {
+    return db.from("sites").where({ id, user_id }).delete();
   },
-  updateTasting(db, id, updateTasting, userid) {
-    return db.from("tastings").where({ id, userid }).update(updateTasting);
+  updateSite(db, id, updateSite, user_id) {
+    return db.from("sites").where({ id, user_id }).update(updateSite);
   },
 };
 
-module.exports = TastingsService; */
+module.exports = SitesService;
