@@ -1,6 +1,6 @@
 const SitesService = {
   getAllSites(db, user_id) {
-    return db.select("*").from("tastings").where({ user_id });
+    return db.select("*").from("sites").where({ user_id });
   },
   insertSite(db, newSite) {
     return db

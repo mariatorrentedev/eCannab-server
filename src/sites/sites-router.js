@@ -17,7 +17,7 @@ sitesRouter
       res.status(400).json({ error: "Brand is required" });
     }
     const newsite = req.body;
-    newsite.userid = req.user.id;
+    newsite.user_id = req.user.id;
 
     SitesService.insertSite(req.app.get("db"), newsite)
       .then((site) => {

@@ -47,7 +47,8 @@ VALUES ('Why CBD is great for your health?','http://bit.ly/resource_momentum', 1
 
 INSERT INTO 
 site_resources (resource_id, site_id)
-VALUES(1,1),
+VALUES
+(1,1),
 (2,1),
 (1,3),
 (2,1),

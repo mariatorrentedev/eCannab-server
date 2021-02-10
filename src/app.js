@@ -7,6 +7,7 @@ const { NODE_ENV } = require("./config");
 const usersRouter = require("./Users/users-router");
 const authRouter = require("./auth/auth-router");
 const sitesRouter = require("./sites/sites-router");
+const resourcesRouter = require("./resources/resources-router");
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
@@ -27,7 +28,7 @@ app.use("/api/s", sitesRouter);
 //Products
 
 //Resources
-
+app.use("/api/resources", resourcesRouter);
 //Orders
 
 //Customers

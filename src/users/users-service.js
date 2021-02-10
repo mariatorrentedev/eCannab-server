@@ -3,13 +3,10 @@ const bcrypt = require("bcryptjs");
 
 const UsersService = {
   hasUserWithEmail(knex, email) {
-    return (
-      knex("users")
-        .where({ email })
-        .first()
-        // converting to a boolean
-        .then((user) => !!user)
-    );
+    return knex("users")
+      .where({ email })
+      .first()
+      .then((user) => !!user);
   },
   insertUser(knex, newUser) {
     return knex
@@ -18,7 +15,6 @@ const UsersService = {
       .returning("*")
       .then((rows) => rows[0]);
   },
-  //bcrypt to hash the password.
   hashPassword(password) {
     return bcrypt.hash(password, 12);
   },
