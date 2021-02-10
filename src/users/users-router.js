@@ -8,6 +8,7 @@ const serializeUser = (user) => {
   return {
     id: user.id,
     email: xss(user.email),
+    password: user.password,
     datecreated: user.datecreated,
   };
 };

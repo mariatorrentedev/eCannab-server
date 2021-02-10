@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 // Users
 app.use(usersRouter);
-app.use("api/auth", authRouter);
+app.use("/api/auth", authRouter);
 // Sites
 
 // Error Handler
