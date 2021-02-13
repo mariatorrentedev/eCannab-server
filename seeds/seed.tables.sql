@@ -55,25 +55,25 @@ VALUES
 (3,1);
 
 INSERT INTO 
-customers (name, email, password, site_id)
+customers (email, password, site_id)
 VALUES (
-    'pablo', 'test1@gmail.com', 'Pablo1234!',1
+    'test1@gmail.com', 'Pablo1234!',1
 ),
 (
-    'josefina','test2@gmail.com', 'Josefina123!',2
+    'test2@gmail.com', 'Josefina123!',2
 ),
 (
-    'piolin','test3@gmail.com', 'Piolin1234!',3
+    'test3@gmail.com', 'Piolin1234!',3
 );
 
 INSERT INTO 
-orders (p_title, total_paid, status, customer_id)
+orders (total_paid, products, customer_id)
 VALUES (
-    'Multipurpose Oil Nano CBD', 150.99, 'Completed', 1
+     150.99,'{1, 2, 3, 4}',  1
 ),(
-    'XTEND Royal Oil Isolated 500mg', 99.99, 'Pending', 2
+     99.99, '{3, 4, 6, 7}', 2
 ),(
-    'Pure CBD 500mg', 49.00, 'Completed', 3
+     49.00, '{3, 4, 2, 1}', 3
 );
 
 COMMIT;

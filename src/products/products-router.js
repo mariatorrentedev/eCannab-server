@@ -17,7 +17,6 @@ productsRouter
       res.status(400).json({ error: "Title is required" });
     }
     const newproduct = req.body;
-    newproduct;
 
     ProductsService.insertProduct(req.app.get("db"), newproduct)
       .then((product) => {
@@ -30,34 +29,31 @@ productsRouter
   .route("/:id")
   .all(requireAuth, (req, res, next) => {
     cid = parseInt(req.params.id);
-    ProductsService.getById(req.app.get("db"), cid, req.site.id)
+    ProductsService.getById(req.app.get("db"), cid)
       .then((products) => {
         if (!products) {
           return res.status(404).json({
             error: { message: `Product doesn't exist` },
           });
         }
-        res.products = products;
+        req.product = products[0];
         next();
       })
       .catch(next);
   })
-
-  .delete(requireAuth, (req, res, next) => {
-    ProductsService.deleteSite(req.app.get("db"), cid, req.site.id)
+  .get((req, res, next) => {
+    res.json(req.product);
+  })
+  .delete((req, res, next) => {
+    ProductsService.deleteProduct(req.app.get("db"), cid)
       .then(() => {
         res.status(204).end();
       })
       .catch(next);
   })
-  .put(requireAuth, bodyParser, (req, res, next) => {
+  .put(bodyParser, (req, res, next) => {
     const updateProduct = req.body;
-    ProductsService.updateProduct(
-      req.app.get("db"),
-      cid,
-      updateProduct,
-      req.site.id
-    )
+    ProductsService.updateProduct(req.app.get("db"), cid, updateProduct)
       .then(() => {
         res.status(200).json((res.updateProduct = updateProduct));
       })

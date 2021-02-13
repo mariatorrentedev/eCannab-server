@@ -1,24 +1,20 @@
 const ProductsService = {
   async getAllProducts(db, user_id) {
-    let rows = await db
+    let sites = await db
       .select("id")
       .from("sites")
       .where({ user_id })
       .distinct()
-      .then((rows) => {
-        return rows;
+      .then((sites) => {
+        return sites;
+        // return db.select("*").from("products").whereIn("site_id", sites.map(s=>s.id));
       });
-    let siteids = rows.map((row) => {
-      return row.id;
-    });
-    return db
-      .select("*")
-      .from("products")
-      .join("sites", "sites.id", "=", "products.site_id")
-      .whereIn("site_id", siteids);
+    let siteids = sites.map((site) => site.id);
+    return db.select("*").from("products").whereIn("site_id", siteids);
   },
-  insertProduct(db, newProduct) {
-    return db
+
+  async insertProduct(db, newProduct) {
+    return await db
       .insert(newProduct)
       .into("products")
       .returning("*")
@@ -26,14 +22,14 @@ const ProductsService = {
         return rows[0];
       });
   },
-  getById(db, id, site_id) {
-    return db.select("*").from("products").where({ id: id, site_id }).first();
+  getById(db, id) {
+    return db.select("*").from("products").where({ id }).first();
   },
-  deleteProduct(db, id, site_id) {
-    return db.from("products").where({ id, site_id }).delete();
+  deleteProduct(db, id) {
+    return db.from("products").where({ id }).delete();
   },
-  updateProduct(db, id, updateProduct, site_id) {
-    return db.from("products").where({ id, site_id }).update(updateProduct);
+  updateProduct(db, id, updateProduct) {
+    return db.from("products").where({ id }).update(updateProduct);
   },
 };
 
