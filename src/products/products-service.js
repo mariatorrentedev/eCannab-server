@@ -13,8 +13,8 @@ const ProductsService = {
     return db.select("*").from("products").whereIn("site_id", siteids);
   },
 
-  async insertProduct(db, newProduct) {
-    return await db
+  insertProduct(db, newProduct) {
+    return db
       .insert(newProduct)
       .into("products")
       .returning("*")

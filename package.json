@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "seed": "psql -U carito -d ecannab -f ./seeds/seed.tables.sql",
     "test": "mocha --require test/setup.js",
     "watch": "npm t -- --watch",
     "start": "node src/server.js",

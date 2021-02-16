@@ -57,13 +57,13 @@ VALUES
 INSERT INTO 
 customers (email, password, site_id)
 VALUES (
-    'test1@gmail.com', 'Pablo1234!',1
+    'testpablo@gmail.com', '$2a$12$vYmcE6sdFL9G7oOj2fv.J.tVaVT3WIElP4MVOCFbWGqqXetsBwswu', 1
 ),
 (
-    'test2@gmail.com', 'Josefina123!',2
+    'testjosefina@gmail.com', 'Josefina123!',2
 ),
 (
-    'test3@gmail.com', 'Piolin1234!',3
+    'testpiolin@gmail.com', 'Piolin1234!',3
 );
 
 INSERT INTO 
