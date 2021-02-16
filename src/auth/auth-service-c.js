@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 
-const AuthService = {
+const AuthServiceCustomer = {
   getCustomerWithEmail(knex, email) {
     return knex("customers").where({ email }).first();
   },
@@ -23,4 +23,4 @@ const AuthService = {
   },
 };
 
-module.exports = AuthService;
+module.exports = AuthServiceCustomer;
