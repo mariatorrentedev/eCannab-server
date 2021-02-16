@@ -42,7 +42,9 @@ sitesRouter
       })
       .catch(next);
   })
-
+  .get((req, res, next) => {
+    res.json(req.site);
+  })
   .delete(requireAuth, (req, res, next) => {
     SitesService.deleteSite(req.app.get("db"), cid, req.user.id)
       .then(() => {

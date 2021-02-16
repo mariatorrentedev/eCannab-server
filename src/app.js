@@ -9,6 +9,7 @@ const authRouter = require("./auth/auth-router");
 const sitesRouter = require("./sites/sites-router");
 const resourcesRouter = require("./resources/resources-router");
 const productsRouter = require("./products/products-router");
+const customersRouter = require("./customers/customers-router");
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
@@ -24,8 +25,10 @@ app.get("/", (req, res) => {
 // Users
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
+
 // Sites
 app.use("/api/s", sitesRouter);
+
 //Products
 app.use("/api/products", productsRouter);
 
@@ -34,9 +37,10 @@ app.use("/api/resources", resourcesRouter);
 
 //Site Resources
 
-//Orders
-
 //Customers
+app.use("/api/customers", customersRouter);
+app.use("/api/authcustomer", authRouter);
+//Orders
 
 // Error Handler
 app.use(function errorHandler(error, req, res, next) {
