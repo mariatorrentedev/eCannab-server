@@ -11,6 +11,7 @@ const resourcesRouter = require("./resources/resources-router");
 const productsRouter = require("./products/products-router");
 const customersRouter = require("./customers/customers-router");
 const authRouterCustomer = require("./auth/auth-router-c");
+const siteResourcesRouter = require("./site_resources/site_resources-router");
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
@@ -37,10 +38,12 @@ app.use("/api/products", productsRouter);
 app.use("/api/resources", resourcesRouter);
 
 //Site Resources
+app.use("/api/site_resources", siteResourcesRouter);
 
 //Customers
 app.use("/api/customers", customersRouter);
 app.use("/api/authcustomer", authRouterCustomer);
+
 //Orders
 
 // Error Handler

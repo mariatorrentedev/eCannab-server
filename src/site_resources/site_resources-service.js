@@ -1,23 +1,27 @@
 const SiteResourceService = {
-  async getAllResources(db, site_id) {
-    let resources = await db
-      .select("id")
-      .from("resources")
-      .where({ site_id })
-      .distinct()
-      .then((resources) => {
-        return db
-          .select("*")
-          .from("resources")
-          .whereIn(
-            "resource_id",
-            resources.map((r) => r.id)
-          );
+  getSiteResources(db, site_id) {
+    console.log(site_id);
+    return db
+      .raw(
+        `
+   SELECT DISTINCT ON (sites.id) *
+   FROM sites
+   INNER JOIN
+   site_resources
+   ON
+   site_resources.site_id = sites.id
+   AND sites.id = ${site_id}`
+      )
+      .then((res) => {
+        return db.raw(`
+     SELECT *
+     FROM resources
+     WHERE resources.id IN (${res.rows[0].resources.join(", ")})
+     `);
       });
   },
-  getById(db, id, user_id) {
-    return db.select("*").from("resources").where({ id: id, user_id }).first();
-  },
+  //Uniendo 1 site con muchos resources 1 TO MANY relationship.
+  //selecciono TODOS de sites table donde el SITE_ID es igual al site_id, luego
 };
 
 module.exports = SiteResourceService;

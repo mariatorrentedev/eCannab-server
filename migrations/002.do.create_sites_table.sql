@@ -5,6 +5,7 @@ CREATE TABLE sites (
     banner TEXT NOT NULL,
     seller_description TEXT NOT NULL,
     subdomain TEXT NOT NULL,
+    resources INTEGER ARRAY,
     "user_id" INTEGER REFERENCES "users"(id)
     ON DELETE CASCADE NOT NULL,
     date_created TIMESTAMPTZ DEFAULT now() NOT NULL

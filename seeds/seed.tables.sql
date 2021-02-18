@@ -23,12 +23,12 @@ VALUES (
 );
 
 INSERT INTO
-sites (brand, logo, banner, seller_description, subdomain, user_id)
+sites (brand, logo, banner, seller_description, subdomain, resources, user_id)
 
 VALUES 
-('Momentum 10x', 'http://bit.ly/momentum_logo', 'http://bit.ly/banner_yellow','We"re a brand commited with the health and overall wellness!','momentum10x', 1),
-('Spero', 'http://bit.ly/spero_logo','http://bit.ly/spero_banner','Spero uses non-GMO, organically-produced hemp harvested','spero',2),
-('XTEND5', 'http://bit.ly/xtend5_logo', 'http://bit.ly/banner_xtend5','We"re a brand commited with the health and overall wellness!','xtend5',3);
+('Momentum 10x', 'http://bit.ly/momentum_logo', 'http://bit.ly/banner_yellow','We"re a brand commited with the health and overall wellness!','momentum10x', ARRAY[1,2,3,4], 1),
+('Spero', 'http://bit.ly/spero_logo','http://bit.ly/spero_banner','Spero uses non-GMO, organically-produced hemp harvested','spero', ARRAY[1,2,3,4], 2),
+('XTEND5', 'http://bit.ly/xtend5_logo', 'http://bit.ly/banner_xtend5','We"re a brand commited with the health and overall wellness!','xtend5',ARRAY[1,2,3,4], 3);
 
 INSERT INTO
 products (title, brand, p_image, price, in_stock, p_description, site_id)
@@ -69,11 +69,11 @@ VALUES (
 INSERT INTO 
 orders (total_paid, products, customer_id)
 VALUES (
-     150.99,'{1, 2, 3, 4}',  1
+     150.99, ARRAY[1, 2, 3, 4],  1
 ),(
-     99.99, '{3, 4, 6, 7}', 2
+     99.99, ARRAY[3, 4, 6, 7], 2
 ),(
-     49.00, '{3, 4, 2, 1}', 3
+     49.00, ARRAY[3, 4, 2, 1], 3
 );
 
 COMMIT;

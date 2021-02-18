@@ -4,5 +4,5 @@ CREATE TABLE orders (
     ON DELETE CASCADE NOT NULL,
     total_paid DECIMAL(5,2),
     date_created TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    products INTEGER[]
+    products INTEGER ARRAY
 )
