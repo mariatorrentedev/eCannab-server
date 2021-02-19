@@ -13,7 +13,6 @@ siteResourcesRouter
       parseInt(req.params.site_id)
     )
       .then((site) => {
-        console.log(site);
         if (!site) {
           return res.status(404).json({
             error: {
