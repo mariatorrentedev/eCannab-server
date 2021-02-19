@@ -28,5 +28,6 @@ siteResourcesRouter
   })
   .get((req, res, next) => {
     res.json(res.site.rows);
-  });
+  })
+  .post((req, res, next) => {});
 module.exports = siteResourcesRouter;

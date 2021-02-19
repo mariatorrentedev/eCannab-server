@@ -1,6 +1,5 @@
 const SiteResourceService = {
   getSiteResources(db, site_id) {
-    console.log(site_id);
     return db
       .raw(
         `
@@ -20,8 +19,16 @@ const SiteResourceService = {
      `);
       });
   },
+  insertResourcesIntoSite(db, newResource) {
+    return db
+      .insert(newResource)
+      .into("sites")
+      .returning("*")
+      .then((rows) => {
+        return rows[0];
+      });
+  },
   //Uniendo 1 site con muchos resources 1 TO MANY relationship.
-  //selecciono TODOS de sites table donde el SITE_ID es igual al site_id, luego
 };
 
 module.exports = SiteResourceService;
