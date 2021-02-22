@@ -1,14 +1,29 @@
 const express = require("express");
-const SiteResourceService = require("./site_resources-service");
+const SiteResourcesService = require("./site_resources-service");
 const { requireAuth } = require("../middleware/jwt-auth");
 
 const siteResourcesRouter = express.Router();
 const bodyParser = express.json();
 
+siteResourcesRouter.route("/").post((req, res, next) => {
+  const { siteid, resource } = req.body;
+  console.log(siteid, resource);
+
+  SiteResourcesService.insertResourcesIntoSite(
+    req.app.get("db"),
+    siteid,
+    resource
+  )
+    .then((resourceOutput) => {
+      res.status(201).json(resourceOutput);
+    })
+    .catch(next);
+});
+
 siteResourcesRouter
   .route("/:site_id")
-  .get((req, res, next) => {
-    SiteResourceService.getSiteResources(
+  .all((req, res, next) => {
+    SiteResourcesService.getSiteResources(
       req.app.get("db"),
       parseInt(req.params.site_id)
     )
@@ -27,6 +42,5 @@ siteResourcesRouter
   })
   .get((req, res, next) => {
     res.json(res.site.rows);
-  })
-  .post((req, res, next) => {});
+  });
 module.exports = siteResourcesRouter;

@@ -1,4 +1,4 @@
-const SiteResourceService = {
+const SiteResourcesService = {
   getSiteResources(db, site_id) {
     return db
       .raw(
@@ -19,9 +19,9 @@ const SiteResourceService = {
      `);
       });
   },
-  insertResourcesIntoSite(db, newResource) {
+  insertResourcesIntoSite(db, resource) {
     return db
-      .insert(newResource)
+      .insert(resource)
       .into("sites")
       .returning("*")
       .then((rows) => {
@@ -31,4 +31,4 @@ const SiteResourceService = {
   //Uniendo 1 site con muchos resources 1 TO MANY relationship.
 };
 
-module.exports = SiteResourceService;
+module.exports = SiteResourcesService;

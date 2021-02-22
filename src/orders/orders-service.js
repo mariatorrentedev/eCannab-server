@@ -1,5 +1,7 @@
 const OrdersService = {
   getSiteOrders(db, site_id) {
+    // the customers table have the site_id and the orders table have the customer_id as foreing key.
+    // I need to fiend the orders from the orders table where the customers.customer.id = customers.site_id.
     return db
       .raw(
         `

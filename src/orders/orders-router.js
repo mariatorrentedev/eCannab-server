@@ -8,7 +8,7 @@ const bodyParser = express.json();
 ordersRouter
   .route("/")
   .get((req, res, next) => {
-    OrdersService.getAllOrders(req.app.get("db"))
+    OrdersService.getSiteOrders(req.app.get("db"))
       .then((orders) => res.json(orders))
       .catch(next);
   })
