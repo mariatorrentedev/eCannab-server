@@ -31,19 +31,19 @@ This app is for 4 types of users: a user=CBD Wholesale seller, and a logged-in u
 - I want to enter my password and email to use this app,
 - So I can have access to my account.
 
-###### (Example) Sign Up / User and Customer (Importance - High) (Est: 3h)
+###### Sign Up / User and Customer (Importance - High) (Est: 3h)
 
 - As a visitor,
 - I want to register to use this app
 - So I can create a personal account.
 
-###### (Example) Dashboard (Importance - High) (Est: 5h)
+###### Dashboard (Importance - High) (Est: 5h)
 
 - As a logged-in user,
 - I want to be able to preview the content of the app (Site Creation/ Resources / Products / Orders).
 - So i can decide what section I want to navigate to.
 
-###### (Example) SiteHome (Importance - High) (Est: 2h)
+###### SiteHome (Importance - High) (Est: 2h)
 
 - As a customer visitor I can see the list of products, search and filter.
 - As a logged-in customer I can add products to the cart and make orders.
