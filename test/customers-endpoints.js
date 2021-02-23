@@ -6,7 +6,7 @@ const app = require("../src/app");
 const jwt = require("jsonwebtoken");
 const { makeCustomersArr } = require("./fixtures");
 
-describe("/api/customers endpoint", () => {
+describe("Customers endpoint", () => {
   let db;
 
   before("make knex instance", () => {
