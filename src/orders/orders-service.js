@@ -8,7 +8,7 @@ const OrdersService = {
    SELECT DISTINCT ON (sites.id) *
    FROM sites
    INNER JOIN
-   orders
+   customers
    ON
    customers.site_id = sites.id
    AND sites.id = ${site_id}`
@@ -17,7 +17,11 @@ const OrdersService = {
         return db.raw(`
      SELECT *
      FROM orders
-     WHERE customer.id IN (${res.rows[0].orders.join(", ")})
+     INNER JOIN 
+     customers
+     ON
+     customers.id = customer_id IN
+      (${res.rows[0].orders})
      `);
       });
   },

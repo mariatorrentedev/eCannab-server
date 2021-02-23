@@ -3,8 +3,7 @@ const { expect } = require("chai");
 const knex = require("knex");
 const supertest = require("supertest");
 const app = require("../src/app");
-const { makeSitesArr } = require("./sites.fixtures");
-const { makeUsersArr } = require("./users.fixtures");
+const { makeSitesArr, makeUsersArr } = require("./fixtures");
 
 describe("Sites endpoints", () => {
   let db;

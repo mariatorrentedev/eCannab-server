@@ -12,18 +12,37 @@ ordersRouter
       .then((orders) => res.json(orders))
       .catch(next);
   })
-  .post(requireAuth, (req, res, next) => {
+  .post((req, res, next) => {
     if (!req.body.total_paid) {
       res.status(400).json({ error: "Total is required" });
     }
     const neworder = req.body;
-    neworder.customer_id = req.customer.id;
 
     OrdersService.insertOrder(req.app.get("db"), neworder)
       .then((order) => {
         res.status(201).location(`/orders/${order.id}`).json(order);
       })
       .catch(next);
+  });
+ordersRouter
+  .route("/:site_id")
+  .all((req, res, next) => {
+    OrdersService.getSiteOrders(req.app.get("db"), parseInt(req.params.site_id))
+      .then((site) => {
+        if (!site) {
+          return res.status(404).json({
+            error: {
+              message: `site doesn't exist`,
+            },
+          });
+        }
+        res.site = site;
+        next();
+      })
+      .catch(next);
+  })
+  .get((req, res, next) => {
+    res.json(res.orders.rows);
   });
 
 ordersRouter
