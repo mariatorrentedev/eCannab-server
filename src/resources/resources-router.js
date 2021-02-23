@@ -12,6 +12,7 @@ resourcesRouter
       .then((resources) => res.json(resources))
       .catch(next);
   })
+  // At a new resource to the eCannab site.
   .post(requireAuth, (req, res, next) => {
     if (!req.body.link) {
       res.status(400).json({ error: "Link is required" });
@@ -37,6 +38,48 @@ resourcesRouter.route("/:id").all(requireAuth, (req, res, next) => {
       }
       res.resources = resources;
       next();
+    })
+    .catch(next);
+});
+resourcesRouter
+  .route("/s/:site_id")
+  .all((req, res, next) => {
+    ResourcesService.getSiteResourcesIdArr(
+      req.app.get("db"),
+      parseInt(req.params.site_id)
+    )
+      .then((site) => {
+        if (!site) {
+          return res.status(404).json({
+            error: {
+              message: `site doesn't exist`,
+            },
+          });
+        }
+        res.site = site;
+        next();
+      })
+      .catch(next);
+  })
+  .get((req, res, next) => {
+    res.json(res.site.rows);
+  });
+// Add a existing resource to a site.
+resourcesRouter.route("/s/").post(requireAuth, (req, res, next) => {
+  if (!req.body.link) {
+    res.status(400).json({ error: "Link is required" });
+  }
+  const { site_id, resource_id } = req.body;
+  console.log(site_id);
+
+  ResourcesService.insertResourceToSite(
+    req.app.get("db"),
+    parseInt(resource_id),
+    parseInt(site_id)
+  )
+    .then((resource) => {
+      console.log(resource);
+      res.status(201).json(resource);
     })
     .catch(next);
 });

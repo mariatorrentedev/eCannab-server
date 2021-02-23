@@ -14,13 +14,12 @@ const OrdersService = {
    AND sites.id = ${site_id}`
       )
       .then((res) => {
+        console.log(res);
         return db.raw(`
      SELECT *
      FROM orders
-     INNER JOIN 
-     customers
-     ON
-     customers.id = customer_id IN
+     WHERE
+     customers.id IN
       (${res.rows[0].orders})
      `);
       });

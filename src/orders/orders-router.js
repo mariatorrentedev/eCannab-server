@@ -12,11 +12,12 @@ ordersRouter
       .then((orders) => res.json(orders))
       .catch(next);
   })
-  .post((req, res, next) => {
+  .post(requireAuth, (req, res, next) => {
     if (!req.body.total_paid) {
       res.status(400).json({ error: "Total is required" });
     }
     const neworder = req.body;
+    neworder.customer_id = req.customer.id;
 
     OrdersService.insertOrder(req.app.get("db"), neworder)
       .then((order) => {
