@@ -7,9 +7,8 @@ As a user, you will have the option to:
 - Register and Login.
 - Create/Edit/Delete your site.
 - Create/Edit/Delete/Add Products to your site.
-- Add resources to the global eCannaB resource source. (optional)
-- Add resources from the global eCannaB resource source to your site.
-- Have Customers that login on your site to be able to place orders.
+- Create/Edit/Delete/Add Rrsources to your site.
+- Have Customers that login on your site to be able to add products to the cart.
 
 ### 1. Working Prototype (to do later)
 
@@ -55,8 +54,7 @@ The app's functionality includes:
 - Every User has the ability to create an account and login.
 - Every User has the ability to create/edit/delete a site.
 - Every User has the ability to create/edit/delete products and adds it to a site.
-- Every User has the ability to create resources and add it to the eCannab Global source.
-- Every User has the ability to add resources from the eCannab global source to their own site.
+- Every User has the ability to create/edit/delete products and adds it to a site.
 - Every Customer in a site can create an account and login.
 - Every Customer has the ability to add products to the cart and make an order.
 - Every Customer has the ability to search products by title and more.
@@ -97,7 +95,8 @@ Register Page
   - id(auto-generated)
   - name (text not null)
   - link (text not null)
-  - user_id(foreign key)
+  - r_image(text not null)
+  - site_id(foreign key)
 
 - Sites (database table)
 
@@ -108,12 +107,6 @@ Register Page
   - subdomain (text not null)
   - resources (an array of id resources)
   - user_id(foreign key)
-
-- Site Resources (database table)
-
-  - id(auto-generated)
-  - site_id(foreing key to sites(id))
-  - resource_id(foreing key to resources(id))
 
 - Products (database table)
 
@@ -162,6 +155,8 @@ Register Page
     ├── /resources
     │   └── GET
     │       POST
+    |       PUT
+    |       DELETE
     │       └──/
     ├── /products
     │   └── GET
