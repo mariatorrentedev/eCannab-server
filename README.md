@@ -1,14 +1,14 @@
 # eCannaB API
 
-eCannab is the v1 application created for CBD wholesale sellers looking to start their business online, in a simple and efficient way, by creating their own website.
+eCannab IS NOT AN ECOMMERCE platform, is the v1 application created for CBD wholesale sellers looking to start their online business, in a simple and efficient way, by creating their own website, adding products and resources to it, and providing a registration system to their customers so that they can navigate privatly to see the resources, and add products to the cart. (Orders made by customers cooming soon)
 
 As a user, you will have the option to:
 
 - Register and Login.
-- Create/Edit/Delete your site.
+- Create/Edit/Delete your site, with your own subdomain.
 - Create/Edit/Delete/Add Products to your site.
-- Create/Edit/Delete/Add Rrsources to your site.
-- Have Customers that login on your site to be able to add products to the cart.
+- Create/Edit/Delete/Add Resources to your site.
+- Have Customers that login on your site to be able to add products to register, login and add products to the cart.
 
 ### 1. Working Prototype (to do later)
 
@@ -40,7 +40,7 @@ This app is for 4 types of users: a user=CBD Wholesale seller, and a logged-in u
 
 - As a logged-in user,
 - I want to be able to preview the content of the app (Site Creation/ Resources / Products / Orders).
-- So i can decide what section I want to navigate to.
+- So I can decide what section I want to navigate to.
 
 ###### SiteHome (Importance - High) (Est: 2h)
 
@@ -55,15 +55,17 @@ The app's functionality includes:
 - Every User has the ability to create/edit/delete a site.
 - Every User has the ability to create/edit/delete products and adds it to a site.
 - Every User has the ability to create/edit/delete products and adds it to a site.
-- Every Customer in a site can create an account and login.
-- Every Customer has the ability to add products to the cart and make an order.
+- Every Customer in a User Site can create an account and login.
+- Every Customer in a User Site has the ability to add products to the cart
 - Every Customer has the ability to search products by title and more.
+
+- Further implementation every customer will be able to make orders in a User Site.
 
 ### 4. Technology
 
 - Front-End: HTML5, CSS3, JavaScript ES6, React
 - Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
-- Development Environment: Heroku, PGAdmin
+- Development Environment: Heroku, DBeaver.
 
 ### 5. Wireframes (to do now)
 
@@ -73,16 +75,7 @@ The app's functionality includes:
 Register Page
 ![Register Page](/github-images/wireframes/register-page-wireframe.png)
 
-### 6. Front-end Structure - React Components Map (to do later)
-
-- (Example) **Index.js** (stateless)
-  - **App.js** (stateful)
-    - **LandingPage.js** (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the **App.js**
-      - **Login.js** (stateful) -
-      - **Register.js** (stateful) -
-    - **Navbar.js** (stateless) -
-
-### 7. Back-end Structure - Business Objects
+### 6. Back-end Structure - Business Objects
 
 - Users (database table)
 
@@ -129,15 +122,15 @@ Register Page
 - Orders (database table)
 
   - id (auto-generated)
-  - total_paid (at least 8 chars, at least one alpha and a special character validation)
+  - total_paid
   - products (an array of the products ids )
   - customer_id(foreign key)
 
-### 8. API Documentation (to do later)
+### 7. API Documentation (to do later)
 
 #### API Overview
 
-```text
+```
     /api
     .
     ├── /auth
@@ -205,7 +198,7 @@ Register Page
     }
 ```
 
-### 9. Screenshots (to do later)
+### 9. Screenshots
 
 (Example) Landing Page
 :-------------------------:
@@ -213,13 +206,7 @@ Register Page
 Register Page
 ![Register Page](/github-images/screenshots/register-page-screenshot.png)
 
-### 10. Development Roadmap (to do later)
-
-This is v1.0 of the app, but future enhancements are expected to include:
-
-- (Example) add more functionality
-
-### 11. How to run it (done)
+### 10. How to run it (done)
 
 Use command line to navigate into the project folder and run the following in terminal
 

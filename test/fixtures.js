@@ -116,16 +116,22 @@ function makeResourcesArr() {
       link:
         "https://cdn.shopify.com/s/files/1/0229/1770/9860/files/MOMENTUM_10X_English.pdf?v=1583794815",
       name: "Why CBD is great",
+      r_image:
+        "https://i.pinimg.com/736x/0f/69/7f/0f697ffa212aef375d37d27044b3c1e1.jpg",
     },
     {
       link:
         "https://cdn.shopify.com/s/files/1/0229/1770/9860/files/MOMENTUM_10X_English.pdf?v=1583794815",
       name: "Why CBD cures cancer",
+      r_image:
+        "https://i.pinimg.com/736x/0f/69/7f/0f697ffa212aef375d37d27044b3c1e1.jpg",
     },
     {
       link:
         "https://cdn.shopify.com/s/files/1/0229/1770/9860/files/MOMENTUM_10X_English.pdf?v=1583794815",
       name: "Why CBD tastes awful",
+      r_image:
+        "https://i.pinimg.com/736x/0f/69/7f/0f697ffa212aef375d37d27044b3c1e1.jpg",
     },
   ];
 }

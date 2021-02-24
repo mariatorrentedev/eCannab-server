@@ -2,35 +2,6 @@ const OrdersService = {
   async getSiteOrders(db, user_id) {
     // the customers table have the site_id and the orders table have the customer_id as foreing key.
     // I need to fiend the orders from the orders table where the customers.customer.id = customers.site_id.
-    let sites = await db
-      .select("id")
-      .from("sites")
-      .where({ user_id })
-      .distinct()
-      .then((sites) => {
-        return sites;
-      });
-    let siteids = sites.map((site) => site.id);
-    return db
-      .select("*")
-      .from("customers")
-      .whereIn("site_id", siteids)
-      .then((customers) => {
-        return customers;
-      });
-
-    let customerIds = customers.map((customer) => customer.id);
-    return db
-      .select("*")
-      .from("orders")
-      .whereIn("customer_id", customerIds)
-      .then((customers) => {
-        return customers;
-      });
-  },
-  async getSiteOrders(db, user_id) {
-    // the customers table have the site_id and the orders table have the customer_id as foreing key.
-    // I need to fiend the orders from the orders table where the customers.customer.id = customers.site_id.
     await db
       .select("id")
       .from("sites")
