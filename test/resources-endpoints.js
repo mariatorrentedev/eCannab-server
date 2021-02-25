@@ -36,12 +36,12 @@ describe("Resources endpoints", () => {
       });
   });
 
-  //after("disconnect from db", () => db.destroy());
-  //afterEach("cleanup", () => db("products").truncate());
-  //afterEach("cleanup", () => db("resources").truncate());
-  //afterEach("cleanup", () => db("site_resources").truncate());
-  //afterEach("cleanup", () => db("resources").truncate());
-  //afterEach("cleanup", () => db("users").truncate());
+  after("disconnect from db", () => db.destroy());
+  afterEach("cleanup", () => db("products").truncate());
+  afterEach("cleanup", () => db("resources").truncate());
+  afterEach("cleanup", () => db("site_resources").truncate());
+  afterEach("cleanup", () => db("resources").truncate());
+  afterEach("cleanup", () => db("users").truncate());
 
   /* GET */
   describe("GET /api/resources", () => {
@@ -68,7 +68,7 @@ describe("Resources endpoints", () => {
         return db.into("resources").insert(testresources);
       });
 
-      it.skip("responds with 200 and all of the resources", () => {
+      it("responds with 200 and all of the resources", () => {
         return supertest(app)
           .get("/api/resources")
           .set("Authorization", `Bearer ${authToken}`)
@@ -95,7 +95,7 @@ describe("Resources endpoints", () => {
           id = res.id;
         });
     });
-    it.skip("creates a resource and responds with 201 and the new resource", () => {
+    it("creates a resource and responds with 201 and the new resource", () => {
       const newResource = makeResourcesArr();
       return supertest(app)
         .post("/api/resources")
@@ -157,7 +157,7 @@ describe("Resources endpoints", () => {
         return db.into("resources").insert(testResources);
       });
 
-      it.skip("responds with 204 and deletes the resource", () => {
+      it("responds with 204 and deletes the resource", () => {
         const idToDelete = 2;
         const expectedResource = testResources.filter(
           (resource) => resource.id !== idToDelete

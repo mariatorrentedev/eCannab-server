@@ -36,12 +36,12 @@ describe("Sites endpoints", () => {
       });
   });
 
-  //after("disconnect from db", () => db.destroy());
-  //afterEach("cleanup", () => db("products").truncate());
-  //afterEach("cleanup", () => db("sites").truncate());
-  //afterEach("cleanup", () => db("site_resources").truncate());
-  //afterEach("cleanup", () => db("resources").truncate());
-  //afterEach("cleanup", () => db("users").truncate());
+  after("disconnect from db", () => db.destroy());
+  afterEach("cleanup", () => db("products").truncate());
+  afterEach("cleanup", () => db("sites").truncate());
+  afterEach("cleanup", () => db("site_resources").truncate());
+  afterEach("cleanup", () => db("resources").truncate());
+  afterEach("cleanup", () => db("users").truncate());
 
   /* GET */
   describe("GET /api/s", () => {
