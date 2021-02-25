@@ -20,7 +20,6 @@ app.use(helmet());
 app.use(
   cors({
     origin: true,
-    credentials: true,
   })
 );
 app.use(function (req, res, next) {
