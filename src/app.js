@@ -13,14 +13,14 @@ const customersRouter = require("./customers/customers-router");
 const authRouterCustomer = require("./auth/auth-router-c");
 const ordersRouter = require("./orders/orders-router");
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
-const { CLIENT_ORIGIN } = require("./config");
 
 const app = express();
 app.use(morgan(morganOption));
 app.use(helmet());
 app.use(
   cors({
-    origin: "*",
+    origin: true,
+    credentials: true,
   })
 );
 app.use(express.json());
