@@ -1,6 +1,6 @@
 # eCannaB API
 
-eCannab is not a ecommerce platform, is the v1 application created for CBD wholesale sellers looking to start their online business, in a simple and efficient way, by creating their own website, adding products and resources to it, and providing a registration system to their customers so that they can navigate privatly to see the resources, and add products to the cart. (Orders made by customers cooming soon)
+eCannab is not a ecommerce platform, is the v1 application created for CBD wholesale sellers looking to start their online business, in a simple and efficient way, by creating their own website, adding products and resources to it, and providing a registration system to their customers so that they can navigate privately to see the resources, and add products to the cart. (Orders made by customers cooming soon)
 
 As a user, you will have the option to:
 
@@ -8,15 +8,34 @@ As a user, you will have the option to:
 - Create/Edit/Delete your site, with your own subdomain.
 - Create/Edit/Delete/Add Products to your site.
 - Create/Edit/Delete/Add Resources to your site.
-- Have Customers that login on your site to be able to add products to register, login and add products to the cart.
 
-### 1. Working Prototype (to do later)
+As a customer of a user site you will have the option to:
 
-You can access a working prototype of the React app here: https://ecannab-client.vercel.app/ and Node app here: https://ecannab-api.herokuapp.com/
+- Register to be able to add products to the cart and see the resources available.
+- 🔜Cooming soon (placing orders by customers in a site)
 
-### 2. User Stories
+---
 
-This app is for 4 types of users: a user=CBD Wholesale seller, and a logged-in user, a customer and a logged-in customer of that user in his site.
+### 🌐 1. Working Prototype
+
+You can access a working prototype of the React app here:
+
+## 🔗 [Live Link](https://ecannab-client.vercel.app/)
+
+and Node app here:
+
+## 🔗 [API](https://ecannab-api.herokuapp.com/) | [API REPO](https://github.com/cartodeveloper/eCannab-server/)
+
+---
+
+### ✍️ 2. User Stories
+
+This app is for 4 types of users:
+
+- a user=CBD Wholesale seller visitor.
+- a login user.
+- a customer visitor
+- a login customer in a user site.
 
 ###### Landing Page (Importance - Low) (Est: 1h)
 
@@ -47,7 +66,9 @@ This app is for 4 types of users: a user=CBD Wholesale seller, and a logged-in u
 - As a customer visitor I can see the list of products, search and filter.
 - As a logged-in customer I can add products to the cart and make orders.
 
-### 3. Functionality (to do now)
+---
+
+### 📳 3. Functionality
 
 The app's functionality includes:
 
@@ -61,21 +82,27 @@ The app's functionality includes:
 
 - Further implementation every customer will be able to make orders in a User Site.
 
-### 4. Technology
+---
+
+### 👩🏽‍💻 4. Technology
 
 - Front-End: HTML5, CSS3, JavaScript ES6, React
 - Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
 - Development Environment: Heroku, DBeaver.
 
-### 5. Wireframes (to do now)
+---
 
-(Example) Landing Page
-:-------------------------:
-![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
-Register Page
-![Register Page](/github-images/wireframes/register-page-wireframe.png)
+### 🎨 5. Screenshots
 
-### 6. Back-end Structure - Business Objects
+- eCannaB User Experience:
+  ![User Experience](https://github.com/cartodeveloper/eCannaB-client/blob/main/public/videos/user-experience.gif?raw=true)
+
+- Customer in user site experience:
+  ![User Experience](https://github.com/cartodeveloper/eCannaB-client/blob/main/public/videos/customer-users-experience.gif?raw=true)
+
+---
+
+### 🟡 6. Back-end Structure - Business Objects
 
 - Users (database table)
 
@@ -126,7 +153,9 @@ Register Page
   - products (an array of the products ids )
   - customer_id(foreign key)
 
-### 7. API Documentation (to do later)
+---
+
+### 📑API Documentation
 
 #### API Overview
 
@@ -165,48 +194,32 @@ Register Page
     │       └── /
 ```
 
-##### POST `/api/auth/login`
+#### API Detail
 
-```js
-    // req.body
-    {
-        "user_name": "demo@gmail.com",
-        "password": "Password1"
-    }
+| Method |          Path           |                          Purpose |
+| :----- | :---------------------: | -------------------------------: |
+| GET    |       /api/users        |                     Get the user |
+| POST   |       /api/users        |                Register the user |
+| POST   |     /api/auth/login     |    Validates username & password |
+| GET    |         /api/s          |       Get all sites from a user. |
+| POST   |         /api/s          |   Create a site in user session. |
+| PUT    |       /api/s/:id        |                       Edit site. |
+| DELETE |       /api/s/:id        |                     Delete site. |
+| GET    |     /api/resources      |   Get all resources from a site. |
+| POST   |     /api/resources      |     Create resources for a site. |
+| PUT    |   /api/resources/:id    |                  Edit resources. |
+| DELETE |   /api/resources/:id    |                Delete resources. |
+| GET    |      /api/products      |    Get all products from a site. |
+| POST   |      /api/products      |      Create products for a site. |
+| PUT    |    /api/products/:id    |                   Edit products. |
+| DELETE |    /api/products/:id    |                 Delete products. |
+| GET    |     /api/customers      |                Get the customer. |
+| POST   |     /api/customers      | Register the customer in a site. |
+| POST   | /api/authcustomer/login |    Validates username & password |
 
-    // res.body
-    {
-    "authToken": String,
-        "userId": 1
-    }
-```
+---
 
-##### POST `/api/users/`
-
-```js
-    // req.body
-    {
-        "user_name": "demo@gmail.com",
-        "password": "123456"
-    }
-
-
-    // res.body
-    {
-        "id": 1,
-        "user_name": "demo@gmail.com"
-    }
-```
-
-### 9. Screenshots
-
-(Example) Landing Page
-:-------------------------:
-![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
-Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
-
-### 10. How to run it (done)
+### ❓❔ 9. How to run it
 
 Use command line to navigate into the project folder and run the following in terminal
 
