@@ -11,8 +11,10 @@
     "dev": "nodemon src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
+    "migrate:production": "heroku run npm run migrate",
     "predeploy": "npm audit",
-    "deploy": "git push heroku main"
+    "deploy": "git push heroku main",
+    "postdeploy": "npm run migrate:production"
   },
   "keywords": [],
   "engines": {
@@ -30,6 +32,7 @@
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
+    "postgrator-cli": "^3.2.0",
     "xss": "^1.0.8"
   },
   "devDependencies": {
@@ -38,7 +41,6 @@
     "eslint-config-prettier": "^6.15.0",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
-    "postgrator-cli": "^3.2.0",
     "prettier": "2.2.1",
     "supertest": "^6.0.1"
   }
