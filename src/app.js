@@ -46,7 +46,7 @@ app.use("/api/customers", customersRouter);
 app.use("/api/authcustomer", authRouterCustomer);
 
 //Orders
-app.use("/api/orders", ordersRouter);
+//app.use("/api/orders", ordersRouter);
 
 // Error Handler
 app.use(function errorHandler(error, req, res, next) {
