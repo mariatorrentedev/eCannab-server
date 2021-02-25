@@ -7,5 +7,6 @@ module.exports = {
     process.env.DATABASE_URL || "postgresql://carito@localhost/ecannab-test",
   API_BASE_URL: process.env.API_BASE_URL || "http://localhost:3000/api",
   JWT_SECRET: process.env.JWT_SECRET,
-  CLIENT_ORIGIN: process.env.CLIENT_ORIGIN,
+  CLIENT_ORIGIN:
+    process.env.CLIENT_ORIGIN || "https://ecannab-client.vercel.app",
 };

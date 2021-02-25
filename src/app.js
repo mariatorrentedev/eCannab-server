@@ -18,7 +18,11 @@ const { CLIENT_ORIGIN } = require("./config");
 const app = express();
 app.use(morgan(morganOption));
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: CLIENT_ORIGIN,
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
