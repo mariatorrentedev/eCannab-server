@@ -1,6 +1,6 @@
 # eCannaB API
 
-eCannab IS NOT AN ECOMMERCE platform, is the v1 application created for CBD wholesale sellers looking to start their online business, in a simple and efficient way, by creating their own website, adding products and resources to it, and providing a registration system to their customers so that they can navigate privatly to see the resources, and add products to the cart. (Orders made by customers cooming soon)
+eCannab is not a ecommerce platform, is the v1 application created for CBD wholesale sellers looking to start their online business, in a simple and efficient way, by creating their own website, adding products and resources to it, and providing a registration system to their customers so that they can navigate privatly to see the resources, and add products to the cart. (Orders made by customers cooming soon)
 
 As a user, you will have the option to:
 
